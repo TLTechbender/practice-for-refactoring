@@ -1,4 +1,4 @@
-/* 
+/*
     Original:
     Write a function `plusFive` that takes in a number as an argument and
     returns the sum of that number and 5.
@@ -9,12 +9,14 @@
 */
 function plusFive(num) {
     return num + 5;
-}
-
+};
+function plusTen(num){
+    return num + 10;
+};
 
 /*
     Original:
-    Write a function `printFives(max)` that prints out the multiples of 5 that 
+    Write a function `printFives(max)` that prints out the multiples of 5 that
     are less than max.
 
     New:
@@ -27,15 +29,24 @@ function printFives(max) {
             console.log(i);
         }
     }
-}
-
+};
+function returnSevens(max){
+ let newarr=[];
+    for (let i = 0; i < max; i++) {
+        if (i % 7 === 0) {
+            console.log(i);
+            newarr.push(i);
+        }
+    }
+return newarr;
+};
 
 /*
     Original:
     Write a function named `eitherStringIncluded(sentence, word1, word2)` that
     accepts a sentence and two words as arguments. The `eitherStringIncluded`
     function should return `true` if *either* `word1` or `word2` is found in
-    the sentence, and `false` if neither is found. 
+    the sentence, and `false` if neither is found.
 
     New:
     Write a function named `bothStringsIncluded(sentence, word1, word2)` that
@@ -46,7 +57,9 @@ function printFives(max) {
 function eitherStringIncluded(sentence, word1, word2) {
     return sentence.includes(word1) || sentence.includes(word2);
 }
-
+function bothStringsIncluded(sentence,word1,word2){
+return sentence.includes(word1)&& sentence.includes(word2);
+};
 
 /*
     Original:
@@ -65,7 +78,14 @@ function sumArray(arr) {
     }
     return sum;
 }
+function productArray(arr){
+ let product = 1;
+    for (let i = 0; i < arr.length; i++) {
+         product *= arr[i];
+    }
+    return product;
 
+};
 
 /*
     Original:
@@ -78,8 +98,16 @@ function sumArray(arr) {
 */
 function threeOrSeven(num) {
     return num % 3 === 0 || num % 7 === 0;
-}
+};
+function fiveAndEleven(num){
+    if (num % 5 === 0 && num % 11 === 0){
+        return true;
+    }
+    else{
+        return false;
+    }
 
+};
 
 /*
     Original:
@@ -91,7 +119,7 @@ function threeOrSeven(num) {
     returns the number of consonants in the word.
 */
 function countVowels(word) {
-    const vowels = ["a", "e", "i", "o", "u"];
+    const vowels= ["a", "e", "i", "o", "u"];
     let count = 0;
     for (let i = 0; i < word.length; i++) {
         if (vowels.includes(word[i])) {
@@ -99,9 +127,19 @@ function countVowels(word) {
         }
     }
     return count;
-}
+};
 
+function countConsonants(word){
+ const vowels = ["a", "e", "i", "o", "u"];
+    let count = 0;
+    for (let i = 0; i < word.length; i++) {
+        if (!vowels.includes(word[i]) && word[i]!=" ") {
+            count++;
+        }
+    }
+    return count;
 
+};
 /*
     Original:
     Write a function `whisper` that takes in a string and returns a "whispered"
@@ -115,20 +153,35 @@ function countVowels(word) {
     string.
 
     Strings are immutable, so here are some tools you may find useful. The
-    `.split('')` function on strings to make a copy of the string as an array. 
+    `.split('')` function on strings to make a copy of the string as an array.
     The `.join('')` function joins the elements in an array into a string.
 */
 function whisper(str) {
     return str.toLowerCase();
 }
-
+function alternatingLetters(str){
+let newarr=str.split("");
+let finalarr=[];
+    for(i=0; i<newarr.length; i++){
+        if(i%2===0){
+           finalarr.push(newarr[i].toLowerCase());
+        }
+        else{
+            finalarr.push(newarr[i].toUpperCase());
+        }
+    };
+return finalarr.join("");
+};
 
 module.exports = {
+    whisper,
+    plusFive,
+    printFives,
     plusTen,
     returnSevens,
-    bothStringsIncluded,
+     bothStringsIncluded,
     productArray,
     fiveAndEleven,
     countConsonants,
-    alternatingLetters   
+    alternatingLetters
 }
